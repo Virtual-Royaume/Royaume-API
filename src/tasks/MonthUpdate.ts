@@ -1,11 +1,12 @@
 import memberCollection, { getMembersWithPoints } from "../database/collections/Member";
 import tier from "../../resources/config/tier.json";
 import { TierUpdate } from "../interfaces/ServerSchema";
+import DayJS from "../utils/DayJS";
 
 setInterval(async() => {
-    const date = new Date();
+    const date = DayJS().tz();
 
-    if (date.getDate() === 1 && date.getHours() === 0 && date.getMinutes() === 0) {
+    if (date.date() === 1 && date.hour() === 0 && date.minute() === 0) {
         // Update member tiers :
         const members = await memberCollection.find({ isOnServer: true }).toArray();
         const membersWithPoints = await getMembersWithPoints();

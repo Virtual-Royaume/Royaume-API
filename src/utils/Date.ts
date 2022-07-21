@@ -1,3 +1,6 @@
-export function getDateWithoutTime(date: Date = new Date()): Date {
-    return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}Z`);
+import { Dayjs } from "dayjs";
+import DayJS from "./DayJS";
+
+export function getDateWithoutTime(date: Dayjs = DayJS().tz()): Dayjs {
+    return date.startOf("day");
 }

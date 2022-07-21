@@ -1,8 +1,9 @@
+import { Dayjs } from "dayjs";
 import { getDateWithoutTime } from "../../utils/Date";
 import database from "../Database";
 
 export interface ServerActivity {
-    date: Date;
+    date: Dayjs;
 
     voiceMinute: number;
     messageCount: number;
